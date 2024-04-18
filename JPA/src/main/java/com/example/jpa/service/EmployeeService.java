@@ -1,15 +1,22 @@
 package com.example.jpa.service;
 
 import com.example.jpa.entity.Employee;
-import com.example.jpa.reosatory.EmplyeeRepo;
+import com.example.jpa.reosatory.EmployeeRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class EmployeeService {
-    private EmplyeeRepo emplyeeRepo;
+    @Autowired
+    private EmployeeRepo employeeRepo;
     public Employee findbyid(int id){
-        return emplyeeRepo.findById(id).orElseThrow();
+        return employeeRepo.findById(id).orElseThrow();
+    }
+    public List<Employee> findall(){
+
+        return employeeRepo.findAll();
+
     }
 }
